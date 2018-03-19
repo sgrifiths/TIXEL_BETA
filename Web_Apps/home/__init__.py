@@ -1,7 +1,7 @@
 from flask import Flask, Blueprint, render_template, redirect, url_for
 
 
-def create_home(config)
+def create_home(config):
 
     home = Flask(__name__)
     home.config.from_object(config)
@@ -24,4 +24,4 @@ def create_home(config)
     def my_list():
         return render_template('hello_list.html')
 
-    return create_home()
+    return create_home
