@@ -1,12 +1,12 @@
 # copyright enhancedEPM
 
-import bp
+
+import Web_Apps
 import config
 
-app = bp.create_app(config)
+app = Web_Apps.create_apps(config)
 
 # This is only used when running locally. When running live, gunicorn runs 
 # the application. 
 if __name__ == '__main__':
-	app.run(host='127.0.0.1', port=8080, debug=True)
-
+    app.run(debug=True)
