@@ -24,4 +24,4 @@ def create_home(config):
     def my_list():
         return render_template('hello_list.html')
 
-    return create_home
+    return home
