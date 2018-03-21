@@ -1,22 +1,14 @@
-from flask import Flask, Blueprint, render_template
-
+from flask import Flask, Blueprint, render_template, redirect, url_for
 
 def create_login(config):
     login = Flask(__name__)
     login.config.from_object(config)
-    login_profile = Blueprint('login', __name__, template_folder='templates', static_folder='static')
-    login.register_blueprint(login_profile, url_prefix='/login')
 
-    @login.route('/login')
-    def my_login():
-        return render_template('login.html')
+    from .login_manager import login_blueprint
+    login.register_blueprint(login_blueprint, url_prefix='/login')
 
-    @login.route('/login/register')
-    def my_register():
-        return render_template('register.html')
-
-    @login.route('/login/error')
-    def my_error():
-        return render_template('error.html')
-
+    # Add a default root route.
+    @login.route("/login")
+    def index():
+        return redirect(url_for('login_manager.login'))
     return login
